@@ -5,8 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-	public Transform CharacterTransform;
-	private int MovementChange = 3;
+	// public Transform CharacterTransform;
+	public Rigidbody2D CharacterBody;
+	public int MovementChange;
 	private InputManager CurrentInstance;
 
 	// Use this for initialization
@@ -20,7 +21,7 @@ public class Movement : MonoBehaviour
 	{
 		float horizontalPosition = CurrentInstance.GetCompDevInputAxis(CompDevInput.DirectionHorizontal);
 		float verticalPosition = CurrentInstance.GetCompDevInputAxis(CompDevInput.DirectionVertical);
-		Vector3 newPosition = new Vector3(horizontalPosition, verticalPosition);
-		CharacterTransform.position += newPosition * MovementChange;
+		Vector3 newVelocity = new Vector3(horizontalPosition, verticalPosition);
+		CharacterBody.velocity = newVelocity.normalized * MovementChange;
 	}
 }
