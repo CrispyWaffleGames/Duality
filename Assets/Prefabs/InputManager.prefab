@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f638b0407d8364196aede7b4b7442cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerInputMode: 2
+  PlayerInputMode: 1
   MaxPlayerCount: 2
   InputEventSystem: {fileID: 114906440447087282}
   InputModule: {fileID: 114079085891389890}

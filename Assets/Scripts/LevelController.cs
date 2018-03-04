@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+	public static LevelController Instance;
+
 	public float LevelWidth;
 	public float LevelHeight;
 
 	public GameObject WallPrefab;
+
+	void Awake()
+	{
+		Instance = this;
+	}
 
 	void Start() 
 	{
@@ -35,5 +42,16 @@ public class LevelController : MonoBehaviour
 				GameObject.Instantiate(WallPrefab, new Vector3(endx, wallY), Quaternion.identity);
 			}
 		}
+	}
+
+	public static Rect GetLevelRect()
+	{
+		return new Rect(new Vector2(-Instance.LevelWidth/2f, -Instance.LevelHeight/2f), new Vector2(Instance.LevelWidth, Instance.LevelHeight));
+	}
+	
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawWireCube(Vector3.zero, new Vector3(LevelWidth, LevelHeight));
 	}
 }
